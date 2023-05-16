@@ -1,10 +1,14 @@
 class EventController < ApplicationController
+
+  before_action :authenticate_user!, :except => [:index]
+
   def index
     @all_events = Event.all
     @all_users = User.all
   end
 
   def show
+    @current_event = Event.find(params[:id])
   end
 
   def new

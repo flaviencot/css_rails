@@ -1,2 +1,11 @@
-<h1>Event#show</h1>
-<p>Find me in app/views/event/show.html.erb</p>
+<div class="container text-center justify-content-center">
+
+<h1>Bienvenue sur la page Event n°<%=@current_event.id %></h1>
+
+<p>Evenement : <%=@current_event.title %></p>
+<p>Date : <%=@current_event.start_date %></p>
+<p>Description : <%=@current_event.description %></p>
+#<p>Cree par : <%= link_to @current_event.attendances.first.user.first_name, user_path(@current_event.attendances.first.user.id), class: "nav-link" %></p>
+<%= button_to "Delete", event_path(@current_event), method: :delete, class: "btn btn-danger" %>
+
+<%= button_to "Edit", edit_event_path(@current_event.id), method: :get, class: "btn btn-secondary" %>

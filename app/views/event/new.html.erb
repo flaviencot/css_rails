@@ -24,8 +24,14 @@
     <%= label_tag 'Start_date' %>
     <%= text_area_tag 'start_date', @event.start_date %>
     <br /> <br />
+    <%= label_tag 'Duration' %>
+    <%= text_area_tag 'duration', @event.duration %>
+    <br /> <br />
     <%= label_tag 'Price' %>
     <%= text_area_tag 'price', @event.price %>
+    <br /> <br />
+    <%= label_tag 'Location' %>
+    <%= text_area_tag 'location', @event.location %>
     <br /> <br />
     <%= submit_tag "Create Post" %>
   <% end %>

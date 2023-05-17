@@ -11,10 +11,18 @@
       <p class="card-title text-secondary"><%= @registered %> utilisateur(s) inscrit actuellement</p>
       <p class="card-title text-secondary">Pour plus de renseignement, contactez <%= @event.admin.first_name %> par mail : <%= @event.admin.email %></p>
       <h2 class="card-title"><%= @event.price %>€</h2>
+      <%= link_to "Participer", new_attendance_path(event_id: @event.id), method: :get, class: "btn btn-secondary" %>
     </div>
   </div>
 </center>
 
+<%= link_to "participants", attendance_index_path(@event.id), method: :get, class: "btn btn-secondary" %>
+
 <%= button_to "Delete", event_path(@event), method: :delete, class: "btn btn-danger" %>
 
-<%= button_to "Edit", edit_event_path(@event.id), method: :get, class: "btn btn-secondary" %>
+<%= link_to "Edit", edit_event_path(@event.id), method: :get, class: "btn btn-secondary" %>
+
+<%= link_to "Buy Event", new_order_path(id: @event.id), method: :get, class: "btn btn-secondary" %>
+
+<%= button_to "Payer", checkout_create_path(total: 10), class: "btn btn-primary", data: {turbo: false} %>
+<%= button_to (t 'pay_now'), checkout_create_path(total: 10), data: {turbo: false} %>

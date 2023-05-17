@@ -8,7 +8,8 @@ class EventController < ApplicationController
   end
 
   def show
-    @current_event = Event.find(params[:id])
+    @event = Event.find(params[:id])
+    @registered = Attendance.distinct.count(:user_id)
   end
 
   def new
@@ -20,8 +21,11 @@ class EventController < ApplicationController
                    'title' => params[:title],
                    'description' => params[:description],
                    'start_date' => params[:start_date],
-                   'price' => params[:price]
-                   )              
+                   'duration' => params[:duration],
+                   'price' => params[:price],
+                   'location' => params[:location]
+                   )  
+    @event.admin_id = current_user.id            
     if @event.save
       redirect_to root_path(success: true)
     else

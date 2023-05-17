@@ -1,11 +1,20 @@
-<div class="container text-center justify-content-center">
+<center>
+  <div>
+    <div class="card border-secondary mb-6" style="width: 600px;">
+      <h2 class="card-title"><%= @event.title %></h2>
+      <p class="card-header">organisé à <%= @event.location %></p>
+      <br>
+      <p class="card-title text-secondary">Description</p>
+      <h5 class="card-header"><%= @event.description %></h5>
+      <h5>Du <%= @event.start_date %> au <%= @event.start_date += @event.duration %></h5>
+      <p class="card-title text-secondary">Dates</p>
+      <p class="card-title text-secondary"><%= @registered %> utilisateur(s) inscrit actuellement</p>
+      <p class="card-title text-secondary">Pour plus de renseignement, contactez <%= @event.admin.first_name %> par mail : <%= @event.admin.email %></p>
+      <h2 class="card-title"><%= @event.price %>€</h2>
+    </div>
+  </div>
+</center>
 
-<h1>Bienvenue sur la page Event n°<%=@current_event.id %></h1>
+<%= button_to "Delete", event_path(@event), method: :delete, class: "btn btn-danger" %>
 
-<p>Evenement : <%=@current_event.title %></p>
-<p>Date : <%=@current_event.start_date %></p>
-<p>Description : <%=@current_event.description %></p>
-#<p>Cree par : <%= link_to @current_event.attendances.first.user.first_name, user_path(@current_event.attendances.first.user.id), class: "nav-link" %></p>
-<%= button_to "Delete", event_path(@current_event), method: :delete, class: "btn btn-danger" %>
-
-<%= button_to "Edit", edit_event_path(@current_event.id), method: :get, class: "btn btn-secondary" %>
+<%= button_to "Edit", edit_event_path(@event.id), method: :get, class: "btn btn-secondary" %>

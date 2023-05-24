@@ -8,6 +8,7 @@ gem "dotenv-rails"
 gem "devise"
 gem 'stripe'
 gem 'table_print'
+gem 'mailjet'
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.4", ">= 7.0.4.3"
 

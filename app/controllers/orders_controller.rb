@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   def new
-    @user = User.find(params[:id].to_i)
+    @user = current_user
     @event = Event.find(params[:id].to_i)
     @amount = @event.price
     @stripe_amount = (@amount * 100).to_i
@@ -8,7 +8,7 @@ class OrdersController < ApplicationController
 
   def create
 
-      @user = User.find(params[:id].to_i)
+      @user = current_user
       @event = Event.find(params[:id].to_i)
       @amount = @event.price
       # Before the rescue, at the beginning of the method

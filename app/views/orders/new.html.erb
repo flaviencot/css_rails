@@ -15,7 +15,7 @@
   <br/>
   <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
   data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-  data-description="Achat d'un produit"
+  data-description="Ticket to <%= @event.title%> on the <%= @event.start_date.strftime("%h %d, %Y") %>"
   data-amount=<%= @stripe_amount %>
   data-currency="eur"
   data-locale="auto"></script>
